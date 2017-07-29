@@ -143,6 +143,27 @@ class LinkedList:
 			 
 		print (nodeList) 
 
+	def reverseIter(self):
+		last = None
+		current = self.head
+		while(current is not None):
+			nextNode = current.next
+			current.next = last
+			last = current
+			current = nextNode
+		self.head = last
+
+
+	def reverseRec(self, n):
+		if n != None:
+			right = n.next
+			if self.head != n:
+				n.next = self.head
+				self.head = n #new end
+			else:
+				n.next = None
+			self.reverseRec(right)
+
 
 node1 = Node(1)
 node2 = Node(2)
@@ -156,7 +177,11 @@ ll.addNode(node3)
 ll.addNode(node4)
 ll.addNode(node5)
 ll.print_list()
-ll.delVal(5)
+# ll.delVal(5)
+# ll.print_list()
+# ll.deleteAtPos(3)
+# ll.print_list()
+ll.reverseIter()
 ll.print_list()
-ll.deleteAtPos(3)
+ll.reverseRec(ll.head)
 ll.print_list()
